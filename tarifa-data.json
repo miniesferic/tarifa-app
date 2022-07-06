@@ -1,0 +1,16 @@
+[
+ {
+  "referencia": "0102A",
+  "nombre": "SKOLL",
+  "color": "Blanco",
+  "tarifa": 0,
+  "croquis": "croquis/01.png"
+ },
+ {
+  "referencia": "0101A",
+  "nombre": "KOLL",
+  "color": "Negro",
+  "tarifa": 0,
+  "croquis": "./croquis/02.png"
+ }
+]
