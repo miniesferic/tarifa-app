@@ -15,10 +15,10 @@ const obtenerDatos = async () => {
 	}
 }
 // console.log(arrTarifa)
-const mostrarTabla = async () => {
-	const elemsTabla = await obtenerDatos()
-	console.log(elemsTabla)
-	elemsTabla.forEach((tarifa) => {
+const mostrarTabla = (arr) => {
+	// const elemsTabla = await obtenerDatos()
+	//console.log(elemsTabla)
+	arr.forEach((tarifa) => {
 		listaTarifa.innerHTML += `
 		<tr>
 		<td>${tarifa.referencia}</td>
@@ -39,16 +39,30 @@ const buscarElem = (e) => {
 		.getElementById('referencia-art')
 		.value.toLowerCase()
 	//mostrarTabla()
-	//filtraNombre(referenciaArt)
-	mostrarTabla(arrResultados)
+	filtraReferencia(referenciaArt)
+	//validacionNum()
 }
-const filtraReferencia = (referencia) => {
-	elemsTabla.forEach((referencia) => {
-		if (obtenerDatos.referencia.toLowerCase().includes(referencia)) {
-			arrResultados.push(mostrarTabla)
-			control++
-		}
+const filtraReferencia = async (referencia) => {
+	const elemsTabla = await obtenerDatos()
+	const elemsFiltrados = elemsTabla.filter((elem) => {
+		return elem.referencia.toLowerCase().includes(referencia)
 	})
+	mostrarTabla(elemsFiltrados)
+	console.log(elemsFiltrados)
+}
+
+// filter
+const validacionNum = () => {
+	const inputNom = document.getElementById('referencia-art')
+	if (control == 0) {
+		document.getElementById('myTable').innerHTML =
+			'No ha encontrado coincidencias'
+		inputNom.style.border = '1px solid tomato'
+	} else {
+		control = 0
+		document.getElementById('myTable').style.color = 'initial'
+		inputNom.style.border = '1px solid #ddd'
+	}
 }
 buscar.addEventListener('click', buscarElem)
 // let myArray = []
