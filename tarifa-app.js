@@ -16,8 +16,7 @@ const obtenerDatos = async () => {
 }
 // console.log(arrTarifa)
 const mostrarTabla = (arr) => {
-	// const elemsTabla = await obtenerDatos()
-	//console.log(elemsTabla)
+	listaTarifa.innerHTML = ''
 	arr.forEach((tarifa) => {
 		listaTarifa.innerHTML += `
 		<tr>
@@ -42,14 +41,13 @@ const buscarElem = (e) => {
 const filtraReferencia = async (referen) => {
 	const elemsTabla = await obtenerDatos()
 	const elemsFiltrados = elemsTabla.filter((elem) => {
-		return elem.referencia.toLowerCase().includes(referen)
+		return elem.referencia.toLowerCase().includes(referen) //O es verdadero o falso
 	})
 	mostrarTabla(elemsFiltrados)
 	validacionRef(elemsFiltrados) //recibirá un argumento que apunta al array elemsFiltrados
 	console.log(elemsFiltrados)
 }
 
-// filter
 const validacionRef = (arr) => {
 	if (!referenciaArtDOM.checkValidity()) {
 		referenciaArtDOM.style.border = '1px solid tomato'
@@ -65,27 +63,6 @@ const validacionRef = (arr) => {
 		referenciaArtDOM.style.border = '1px solid #ddd'
 	}
 }
-
-// const validacionNum = () => {
-// 	const inputNum = document.getElementById('num-stock')
-// 	const inputNom = document.getElementById('referencia-art')
-// 	if (!inputNum.checkValidity()) {
-// 		inputNum.style.border = '1px solid tomato'
-// 		document.getElementById('myTable').innerHTML =
-// 			'Introduce una cantidad entre 1 y 999'
-// 	} else {
-// 		inputNum.style.border = '1px solid #ddd'
-// 	}
-// 	if (control == 0) {
-// 		document.getElementById('myTable').innerHTML =
-// 			'No ha encontrado coincidencias'
-// 		inputNom.style.border = '1px solid tomato'
-// 	} else {
-// 		control = 0
-// 		document.getElementById('myTable').style.color = 'initial'
-// 		inputNom.style.border = '1px solid #ddd'
-// 	}
-// }
 buscar.addEventListener('click', buscarElem)
 
 // let myArray = []
