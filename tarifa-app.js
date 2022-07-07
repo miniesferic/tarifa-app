@@ -1,5 +1,8 @@
+// variables globales
 const listaTarifa = document.getElementById('myTable')
 const referenciaArtDOM = document.getElementById('referencia-art')
+const botonBuscar = document.getElementById('buscar')
+// función responsable de fetch
 const obtenerDatos = async () => {
 	try {
 		const response = await fetch('./tarifa-data.json')
@@ -8,7 +11,7 @@ const obtenerDatos = async () => {
 		console.log(error)
 	}
 }
-
+// función que genera y muestra los elementos dinámicos de la tabla
 const mostrarTabla = (arr) => {
 	listaTarifa.innerHTML = ''
 	arr.forEach((tarifa) => {
@@ -23,12 +26,13 @@ const mostrarTabla = (arr) => {
 		`
 	})
 }
-const botonBuscar = document.getElementById('buscar')
+// función que se encarga del evento click
 const buscarElem = (e) => {
 	e.preventDefault()
 	const referenciaArt = referenciaArtDOM.value.toLowerCase()
 	filtraReferencia(referenciaArt)
 }
+// función que filtra datos a mostrar en la tabla
 const filtraReferencia = async (referencia) => {
 	const elemsTabla = await obtenerDatos()
 	const elemsFiltrados = elemsTabla.filter((elem) => {
@@ -37,11 +41,13 @@ const filtraReferencia = async (referencia) => {
 	mostrarTabla(elemsFiltrados)
 	validacionNum(elemsFiltrados)
 }
+// función de apoyo de validación encargada de errores
 const estilosError = (mensaje) => {
 	listaTarifa.innerHTML = mensaje
 	listaTarifa.style.color = 'tomato'
 	referenciaArtDOM.style.border = '1px solid tomato'
 }
+// función de validación de datos introducidos por el usuario
 const validacionNum = (arr) => {
 	if (!referenciaArtDOM.checkValidity()) {
 		estilosError('Este campo no se puede dejar en blanco')
@@ -52,7 +58,10 @@ const validacionNum = (arr) => {
 		referenciaArtDOM.style.border = '1px solid #ddd'
 	}
 }
+//evento click
 botonBuscar.addEventListener('click', buscarElem)
+
+// VERSIÓN EN DESUSO DE LA APP
 // let myArray = []
 
 // $.ajax({
