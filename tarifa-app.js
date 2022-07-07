@@ -36,7 +36,7 @@ const buscarElem = (e) => {
 const filtraReferencia = async (referencia) => {
 	const elemsTabla = await obtenerDatos()
 	const elemsFiltrados = elemsTabla.filter((elem) => {
-		return elem.referencia.toLowerCase().includes(referen)
+		return elem.referencia.toLowerCase().includes(referencia)
 	})
 	mostrarTabla(elemsFiltrados)
 	validacionNum(elemsFiltrados)
