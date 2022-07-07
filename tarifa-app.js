@@ -5,7 +5,7 @@ const listaTarifa = document.getElementById('myTable')
 // fetch('tarifa-data.json')
 // 	.then((response) => response.json())
 // 	.then((data) => data.forEach((dato) => arrTarifa.push(dato)))
-
+const referenciaArtDOM = document.getElementById('referencia-art')
 const obtenerDatos = async () => {
 	try {
 		const response = await fetch('./tarifa-data.json')
@@ -35,36 +35,59 @@ let arrResultados = []
 let control = 0
 const buscarElem = (e) => {
 	e.preventDefault()
-	const referenciaArt = document
-		.getElementById('referencia-art')
-		.value.toLowerCase()
+	const referenciaArt = referenciaArtDOM.value.toLowerCase()
 	//mostrarTabla()
 	filtraReferencia(referenciaArt)
-	//validacionNum()
 }
-const filtraReferencia = async (referencia) => {
+const filtraReferencia = async (referen) => {
 	const elemsTabla = await obtenerDatos()
 	const elemsFiltrados = elemsTabla.filter((elem) => {
-		return elem.referencia.toLowerCase().includes(referencia)
+		return elem.referencia.toLowerCase().includes(referen)
 	})
 	mostrarTabla(elemsFiltrados)
+	validacionRef(elemsFiltrados) //recibirá un argumento que apunta al array elemsFiltrados
 	console.log(elemsFiltrados)
 }
 
 // filter
-const validacionNum = () => {
-	const inputNom = document.getElementById('referencia-art')
-	if (control == 0) {
-		document.getElementById('myTable').innerHTML =
-			'No ha encontrado coincidencias'
-		inputNom.style.border = '1px solid tomato'
+const validacionRef = (arr) => {
+	if (!referenciaArtDOM.checkValidity()) {
+		referenciaArtDOM.style.border = '1px solid tomato'
+		listaTarifa.innerHTML = 'Introduce una referencia'
 	} else {
-		control = 0
-		document.getElementById('myTable').style.color = 'initial'
-		inputNom.style.border = '1px solid #ddd'
+		referenciaArtDOM.style.border = '1px solid #ddd'
+	}
+	if (arr.length == 0) {
+		listaTarifa.innerHTML = 'No ha encontrado coincidencias'
+		referenciaArtDOM.style.border = '1px solid tomato'
+	} else {
+		referenciaArtDOM.style.color = 'initial'
+		referenciaArtDOM.style.border = '1px solid #ddd'
 	}
 }
+
+// const validacionNum = () => {
+// 	const inputNum = document.getElementById('num-stock')
+// 	const inputNom = document.getElementById('referencia-art')
+// 	if (!inputNum.checkValidity()) {
+// 		inputNum.style.border = '1px solid tomato'
+// 		document.getElementById('myTable').innerHTML =
+// 			'Introduce una cantidad entre 1 y 999'
+// 	} else {
+// 		inputNum.style.border = '1px solid #ddd'
+// 	}
+// 	if (control == 0) {
+// 		document.getElementById('myTable').innerHTML =
+// 			'No ha encontrado coincidencias'
+// 		inputNom.style.border = '1px solid tomato'
+// 	} else {
+// 		control = 0
+// 		document.getElementById('myTable').style.color = 'initial'
+// 		inputNom.style.border = '1px solid #ddd'
+// 	}
+// }
 buscar.addEventListener('click', buscarElem)
+
 // let myArray = []
 
 // $.ajax({
