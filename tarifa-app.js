@@ -42,7 +42,7 @@ const estilosError = (mensaje) => {
 	listaTarifa.style.color = 'tomato'
 	referenciaArtDOM.style.border = '1px solid tomato'
 }
-estilosInicial = () => {
+const estilosInicial = () => {
 	listaTarifa.style.color = 'initial'
 	referenciaArtDOM.style.border = '1px solid #ddd'
 }
