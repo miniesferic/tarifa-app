@@ -1,11 +1,8 @@
+// variables globales
 const listaTarifa = document.getElementById('myTable')
-
-// let arrTarifa = []
-
-// fetch('tarifa-data.json')
-// 	.then((response) => response.json())
-// 	.then((data) => data.forEach((dato) => arrTarifa.push(dato)))
 const referenciaArtDOM = document.getElementById('referencia-art')
+const botonBuscar = document.getElementById('buscar')
+// función responsable de fetch
 const obtenerDatos = async () => {
 	try {
 		const response = await fetch('./tarifa-data.json')
@@ -14,10 +11,9 @@ const obtenerDatos = async () => {
 		console.log(error)
 	}
 }
-// console.log(arrTarifa)
+// función que genera y muestra los elementos dinámicos de la tabla
 const mostrarTabla = (arr) => {
-	// const elemsTabla = await obtenerDatos()
-	//console.log(elemsTabla)
+	listaTarifa.innerHTML = ''
 	arr.forEach((tarifa) => {
 		listaTarifa.innerHTML += `
 		<tr>
@@ -30,64 +26,42 @@ const mostrarTabla = (arr) => {
 		`
 	})
 }
-const botonBuscar = document.getElementById('buscar')
-let arrResultados = []
-let control = 0
+// función que se encarga del evento click
 const buscarElem = (e) => {
 	e.preventDefault()
 	const referenciaArt = referenciaArtDOM.value.toLowerCase()
-	//mostrarTabla()
 	filtraReferencia(referenciaArt)
 }
-const filtraReferencia = async (referen) => {
+// función que filtra datos a mostrar en la tabla
+const filtraReferencia = async (referencia) => {
 	const elemsTabla = await obtenerDatos()
 	const elemsFiltrados = elemsTabla.filter((elem) => {
 		return elem.referencia.toLowerCase().includes(referen)
 	})
 	mostrarTabla(elemsFiltrados)
-	validacionRef(elemsFiltrados) //recibirá un argumento que apunta al array elemsFiltrados
-	console.log(elemsFiltrados)
+	validacionNum(elemsFiltrados)
 }
-
-// filter
-const validacionRef = (arr) => {
+// función de apoyo de validación encargada de errores
+const estilosError = (mensaje) => {
+	listaTarifa.innerHTML = mensaje
+	listaTarifa.style.color = 'tomato'
+	referenciaArtDOM.style.border = '1px solid tomato'
+}
+// función de validación de datos introducidos por el usuario
+const validacionNum = (arr) => {
 	if (!referenciaArtDOM.checkValidity()) {
-		referenciaArtDOM.style.border = '1px solid tomato'
-		listaTarifa.innerHTML = 'Introduce una referencia'
+		estilosError('Este campo no se puede dejar en blanco')
+	} else if (arr.length === 0) {
+		estilosError('No se han encontrado coincidencias')
 	} else {
-		referenciaArtDOM.style.border = '1px solid #ddd'
-	}
-	if (arr.length == 0) {
-		listaTarifa.innerHTML = 'No ha encontrado coincidencias'
-		referenciaArtDOM.style.border = '1px solid tomato'
-	} else {
-		referenciaArtDOM.style.color = 'initial'
+		listaTarifa.style.color = 'initial'
 		referenciaArtDOM.style.border = '1px solid #ddd'
 	}
 }
+//evento click
+botonBuscar.addEventListener('click', buscarElem)
 
-// const validacionNum = () => {
-// 	const inputNum = document.getElementById('num-stock')
-// 	const inputNom = document.getElementById('referencia-art')
-// 	if (!inputNum.checkValidity()) {
-// 		inputNum.style.border = '1px solid tomato'
-// 		document.getElementById('myTable').innerHTML =
-// 			'Introduce una cantidad entre 1 y 999'
-// 	} else {
-// 		inputNum.style.border = '1px solid #ddd'
-// 	}
-// 	if (control == 0) {
-// 		document.getElementById('myTable').innerHTML =
-// 			'No ha encontrado coincidencias'
-// 		inputNom.style.border = '1px solid tomato'
-// 	} else {
-// 		control = 0
-// 		document.getElementById('myTable').style.color = 'initial'
-// 		inputNom.style.border = '1px solid #ddd'
-// 	}
-// }
-buscar.addEventListener('click', buscarElem)
-
+// VERSIÓN EN DESUSO DE LA APP
 // let myArray = []
 
 // $.ajax({
