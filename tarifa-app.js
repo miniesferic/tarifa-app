@@ -42,17 +42,14 @@ const estilosError = (mensaje) => {
 	listaTarifa.style.color = 'tomato'
 	referenciaArtDOM.style.border = '1px solid tomato'
 }
-const estilosInicial = () => {
-	listaTarifa.style.color = 'initial'
-	referenciaArtDOM.style.border = '1px solid #ddd'
-}
 const validacionNum = (arr) => {
 	if (!referenciaArtDOM.checkValidity()) {
 		estilosError('Este campo no se puede dejar en blanco')
 	} else if (arr.length === 0) {
 		estilosError('No ha encontrado coincidencias')
 	} else {
-		estilosInicial()
+		listaTarifa.style.color = 'initial'
+		referenciaArtDOM.style.border = '1px solid #ddd'
 	}
 }
 botonBuscar.addEventListener('click', buscarElem)
