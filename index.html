@@ -1,62 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Tabla</title>
-    <script src="tarifa-app.js" defer></script>
-    <style>
-        th {
-            color: #fff;
-            background: #515151;
-            }
-        #referencia-art::placeholder {
-            color: #ddd;
-            }
-        .table td{
-            vertical-align: middle;
-        }
-        .imagenCroquis{
-            width:90px;
-        }
-        @media only screen and (max-width: 480px) {
-            #buscar {
-                display: block;
-                margin: auto;
-            }
-        
-        }
-        td .croquis{
-            width: 20px;
-        }
-        
-    </style>
-   
-</head>
-<body>
-    <form class="row">
-        <div class="form-group col-md-5">
-            <label for="referencia-art" style="padding: 10px;">Ref. Corta Artículo</label>
-            <input type="search" placeholder=" ej.: 0074A o 796" name="referencia-art" id="referencia-art" style="border:1px Solid rgb(118, 118, 118); border-radius:2px; width: 175px">
-        </div>
-        <div class="form-group col-md-2">
-            <button type="submit" id="buscar" class="btn" style="background-color: #007bff; color:white;" >Buscar</button>
-        </div>
-    </form>
-    <table class="table table-striped">
-        <tr class="bg-info">
-            <th>Código</th>
-            <th>Nombre</th>
-            <th>Color</th>
-            <th>Tarifa</th>
-            <th>Croquis</th>
-        </tr>
-        <tbody id="myTable">
-        </tbody>
-    </table>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+		<title>Tabla</title>
+		<script src="tarifa-app.js" defer></script>
+		<style>
+			th {
+				color: #fff;
+				background: #515151;
+			}
+			#referencia-art::placeholder {
+				color: #ddd;
+			}
+			.table td {
+				vertical-align: middle;
+			}
+			.imagenCroquis {
+				width: 90px;
+			}
+			@media only screen and (max-width: 480px) {
+				#buscar {
+					display: block;
+					margin: auto;
+				}
+			}
+			td .croquis {
+				width: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<form class="row">
+			<div class="form-group col-md-5">
+				<label for="referencia-art" style="padding: 10px"
+					>Ref. Corta Artículo</label
+				>
+				<input
+					type="search"
+					placeholder=" ej.: 0074A o 796"
+					name="referencia-art"
+					id="referencia-art"
+					style="
+						border: 1px Solid rgb(118, 118, 118);
+						border-radius: 2px;
+					"
+					required
+				/>
+			</div>
+			<div class="form-group col-md-2">
+				<button
+					type="submit"
+					id="buscar"
+					class="btn"
+					style="background-color: #007bff; color: white"
+				>
+					Buscar
+				</button>
+			</div>
+		</form>
+		<table class="table table-striped">
+			<tr class="bg-info">
+				<th>Código</th>
+				<th>Nombre</th>
+				<th>Color</th>
+				<th>Tarifa</th>
+				<th>Croquis</th>
+			</tr>
+			<tbody id="myTable"></tbody>
+		</table>
+	</body>
 </html>
