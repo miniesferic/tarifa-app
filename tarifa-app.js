@@ -52,10 +52,7 @@ const validacionRef = (arr) => {
 	if (!referenciaArtDOM.checkValidity()) {
 		referenciaArtDOM.style.border = '1px solid tomato'
 		listaTarifa.innerHTML = 'Introduce una referencia'
-	} else {
-		referenciaArtDOM.style.border = '1px solid #ddd'
-	}
-	if (arr.length == 0) {
+	} else if (arr.length == 0) {
 		listaTarifa.innerHTML = 'No ha encontrado coincidencias'
 		referenciaArtDOM.style.border = '1px solid tomato'
 	} else {
