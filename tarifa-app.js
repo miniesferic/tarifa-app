@@ -49,10 +49,7 @@ estilosInicial = () => {
 const validacionNum = (arr) => {
 	if (!referenciaArtDOM.checkValidity()) {
 		estilosError('Este campo no se puede dejar en blanco')
-	} else {
-		estilosInicial()
-	}
-	if (arr.length === 0) {
+	} else if (arr.length === 0) {
 		estilosError('No ha encontrado coincidencias')
 	} else {
 		estilosInicial()
