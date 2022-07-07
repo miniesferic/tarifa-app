@@ -52,7 +52,7 @@ const validacionNum = (arr) => {
 	if (!referenciaArtDOM.checkValidity()) {
 		estilosError('Este campo no se puede dejar en blanco')
 	} else if (arr.length === 0) {
-		estilosError('No ha encontrado coincidencias')
+		estilosError('No se han encontrado coincidencias')
 	} else {
 		listaTarifa.style.color = 'initial'
 		referenciaArtDOM.style.border = '1px solid #ddd'
