@@ -21,7 +21,7 @@ const mostrarTabla = (arr) => {
 		<td>${tarifa.nombre}</td>
 		<td>${tarifa.color}</td>
 		<td>${tarifa.tarifa}</td>
-		<td><img class="imagenCroquis" src='${tarifa.croquis}'></td>
+		<td style="width:450px"><img class="imagenCroquis" src='${tarifa.croquis}'></td>
 		</tr>
 		`
 	})
