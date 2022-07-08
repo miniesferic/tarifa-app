@@ -1,16 +1,16 @@
 [
  {
-  "referencia": "0102A",
-  "nombre": "SKOLL",
-  "color": "Blanco",
-  "tarifa": 0,
-  "croquis": "croquis/01.png"
+  "referencia": "0066A",
+  "nombre": "ALBIORIX",
+  "color": "Blanco + Negro",
+  "tarifa": "141,70€",
+  "croquis": "./croquis/pic0066a.png"
  },
  {
-  "referencia": "0101A",
-  "nombre": "KOLL",
-  "color": "Negro",
-  "tarifa": 0,
-  "croquis": "./croquis/02.png"
+  "referencia": "0075A",
+  "nombre": "HELENA",
+  "color": "Gris",
+  "tarifa": "185,30€",
+  "croquis": "./croquis/pic0075a.png"
  }
 ]
